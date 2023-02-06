@@ -109,10 +109,12 @@ const eliminarEvento = async( req, res = response) => {
             });
         }
 
-
-        const eventoBorrado = await Evento.findByIdAndDelete(eventoId );
-
-        response.json({ ok: true });
+        console.log(eventoId)
+        // await Evento.findByIdAndDelete(eventoId );
+        await Evento.deleteOne({_id: eventoId })
+        console.log('asdsadsa')
+        res.json({ ok: true });
+        console.log('Terminé')
 
     } catch (error) {
         console.log(error)
@@ -120,6 +122,8 @@ const eliminarEvento = async( req, res = response) => {
             ok: false,
             msg: 'Hable con el administrador'
         })
+        console.log('Terminé 2')
+
     }
 }
 
